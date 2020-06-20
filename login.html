@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>用户名：<input type="text" name="user" id="user"></p>
+    <p>密码：<input type="text" name="pass" id="pass"></p>
+    <button id="login">登录</button>   
+    <button id="add">注册</button>
+</body>
+</html>
+<script src="./ajax.js"></script>
+<script>
+    login.onclick = function(){
+        ajax({
+            type:'get',
+            url:'./login.php',
+            date:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function(date){
+                var json = JSON.parse(date);
+                if(json.err ==0 ){
+                    alert(json.msg);
+                }
+            }
+        })
+    }
+</script>
